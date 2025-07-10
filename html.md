@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="./formulario.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="cssfile.css">
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;400;500;600;700;900&display=swap"
       rel="stylesheet"
@@ -19,12 +20,37 @@
       </div>
 
       <form id="form" class="form">
+
         <div class="form-control">
-          <label for="username">Nome de usuário:</label>
+          <label for="username">Nome Completo:</label>
           <input
             type="text"
             id="username"
-            placeholder="Digite seu nome de usuário..."
+            placeholder="Digite seu nome completo..."
+          />
+          <i class="fas fa-exclamation-circle"></i>
+          <i class="fas fa-check-circle"></i>
+          <small>Mensagem de erro </small>
+        </div>
+
+        <div class="form-control">
+          <label for="matricula-password-confirmation">Matrícula</label>
+          <input
+            type="text"
+            id="matricula-password-confirmation"
+            placeholder="Digite sua Matrícula..."
+          />
+          <i class="fas fa-exclamation-circle"></i>
+          <i class="fas fa-check-circle"></i>
+          <small>Mensagem de erro </small>
+        </div>
+
+        <div class="form-control">
+          <label for="cpf-password-confirmation">CPF</label>
+          <input
+            type="text"
+            id="cpf-password-confirmation"
+            placeholder="Digite seu CPF..."
           />
           <i class="fas fa-exclamation-circle"></i>
           <i class="fas fa-check-circle"></i>
@@ -70,10 +96,36 @@
             <h1>Termos de Uso</h1>
 
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe
-              dignissimos quas doloremque eius quaerat quae minus delectus, iste
-              aspernatur molestiae, optio numquam. Minima excepturi animi
-              consequatur nisi, consectetur blanditiis officia!
+              📘 Termos de Uso e Política de Privacidade – Sistema de Biblioteca
+              IFG 
+                  Este sistema coleta e trata seus dados pessoais conforme a Lei
+              Geral de Proteção de Dados (Lei nº 13.709/2018 – LGPD), integrando
+              práticas de privacidade desde a concepção (privacy by design). Ao
+              continuar, você declara estar ciente e de acordo com as seguintes
+              condições: 
+              🔒 Dados Coletados 
+               - Nome completo, CPF, matrícula,
+              e-mail institucional e senha (criptografada). 
+              🎯 Finalidade 
+               - Identificação no sistema; 
+               - Registro e controle de empréstimos/devoluções de livros; 
+               - Comunicação institucional com a biblioteca. 
+              📁 Armazenamento 
+               - Durante sua matrícula ativa e por
+              até 5 anos após seu desligamento, conforme normas institucionais e
+              legais.
+              🔐 Segurança 
+               - Seus dados são protegidos por criptografia,
+              conexões seguras (HTTPS) e acesso controlado a servidores. 
+              👥 Acesso e Compartilhamento 
+               - Apenas você, bibliotecários e equipe
+              técnica autorizada terão acesso aos seus dados. 
+               - Os dados não são compartilhados com terceiros externos ao IFG. 
+              🧾 Seus Direitos
+              Você pode, a qualquer momento: 
+                - Acessar e corrigir seus dados; 
+                - Solicitar exclusão ou anonimização, quando aplicável; 
+                - Obter informações sobre o uso dos seus dados.
             </p>
 
             <div class="terms-footer">
@@ -95,6 +147,6 @@
       src="https://kit.fontawesome.com/39fa803a05.js"
       crossorigin="anonymous"
     ></script>
-    <script src="./script.js"></script>
-  </body>
+    <script src="jsfile.js"></script>
+  </body>
 </html>

@@ -7,7 +7,9 @@ document.addEventListener("DOMContentLoaded", function () {
   const button = document.querySelector("button");
   const modal = document.querySelector("dialog");
   const checkbox = document.getElementById("readCheckbox");
-  const confirmButton = document.getElementById("confirmButton"); // Mudei para confirmButton
+  const confirmButton = document.getElementById("confirmButton");
+  const cpf = document.getElementById("cpf-password-confirmation");
+  const matricula = document.getElementById("matricula-password-confirmation");
 
   form.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -19,53 +21,68 @@ document.addEventListener("DOMContentLoaded", function () {
     const emailValue = email.value;
     const passwordValue = password.value;
     const passwordConfirmationValue = passwordConfirmation.value;
+    const cpfValue = cpf.value;
+    const matriculaValue = matricula.value;
+
+    let isValid = true; // Flag para verificar se o formulário é válido
 
     if (usernameValue === "") {
-      setErrorFor(username, "O nome de usuário é obrigatório.");
+      setErrorFor(username, "O nome do usuário é obrigatório.");
+      isValid = false;
     } else {
       setSuccessFor(username);
     }
 
+    if (matriculaValue === "") {
+      setErrorFor(matricula, "A matrícula do usuário é obrigatória.");
+      isValid = false;
+    } else {
+      setSuccessFor(matricula);
+    }
+    
+    if (cpfValue === "") {
+      setErrorFor(cpf, "O CPF é obrigatório.");
+      isValid = false;
+    } else {
+      setSuccessFor(cpf);
+    }
+
     if (emailValue === "") {
-      setErrorFor(email, "O email é obrigatório.");
+      setErrorFor(email, "O email institucional é obrigatório.");
+      isValid = false;
     } else if (!checkEmail(emailValue)) {
       setErrorFor(email, "Por favor, insira um email válido.");
+      isValid = false;
     } else {
       setSuccessFor(email);
     }
 
     if (passwordValue === "") {
       setErrorFor(password, "A senha é obrigatória.");
+      isValid = false;
     } else if (passwordValue.length < 7) {
       setErrorFor(password, "A senha precisa ter no mínimo 7 caracteres.");
+      isValid = false;
     } else {
       setSuccessFor(password);
     }
 
     if (passwordConfirmationValue === "") {
-      setErrorFor(
-        passwordConfirmation,
-        "A confirmação de senha é obrigatória."
-      );
+      setErrorFor(passwordConfirmation, "A confirmação de senha é obrigatória.");
+      isValid = false;
     } else if (passwordConfirmationValue !== passwordValue) {
       setErrorFor(passwordConfirmation, "As senhas não conferem.");
+      isValid = false;
     } else {
       setSuccessFor(passwordConfirmation);
     }
 
-    const formControls = form.querySelectorAll(".form-control");
-    const formsIsValid = [...formControls].every((formControl) => {
-      return formControl.className === "form-control success";
-    });
-
-    if (formsIsValid) {
+    if (isValid) {
       console.log("O formulário está 100% válido!");
-      button.onclick = function () {
-        modal.showModal();
-        // Resetar o checkbox quando o modal abrir
-        checkbox.checked = false;
-        confirmButton.disabled = true;
-      };
+      modal.showModal();
+      // Resetar o checkbox quando o modal abrir
+      checkbox.checked = false;
+      confirmButton.disabled = true;
     }
   }
 
@@ -77,8 +94,7 @@ document.addEventListener("DOMContentLoaded", function () {
   confirmButton.addEventListener("click", () => {
     if (checkbox.checked) {
       modal.close();
-      // Aqui você pode adicionar o envio do formulário se quiser
-      // form.submit();
+      form.submit(); // Envia o formulário após fechar o modal
     }
   });
 
@@ -103,8 +119,6 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function checkEmail(email) {
-    return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
-      email
-    );
-  }
+    return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email);
+  }
 });
